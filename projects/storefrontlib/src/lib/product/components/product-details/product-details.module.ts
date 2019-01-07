@@ -15,10 +15,12 @@ import { ProductAttributesComponent } from './product-attributes/product-attribu
 import { ProductImagesComponent } from './product-images/product-images.component';
 import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
 import { ProductSummaryComponent } from './product-summary/product-summary.component';
+import { CssOutletModule } from '../../../css-outlet/css-outlet.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    CssOutletModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
