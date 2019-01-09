@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { OutletRefModule } from '../../outlet/index';
+import { CssRefModule } from '../../css-outlet/css-ref/css-ref.module';
 
+import { AddressBookPageLayoutModule } from './address-book-page-layout/address-book-page-layout.module';
 import { CartPageLayoutModule } from './cart-page-layout/cart-page-layout.module';
 import { CategoryPageLayoutModule } from './category-page-layout/category-page-layout.module';
 import { ContactPageLayoutModule } from './contact-page-layout/contact-page-layout.module';
@@ -12,7 +14,6 @@ import { MainModule } from './main/main.module';
 import { MultiStepCheckoutPageLayoutModule } from './multi-step-checkout-page-layout/multi-step-checkout-page-layout.module';
 import { OrderConfirmationPageLayoutModule } from './order-confirmation-page-layout/order-confirmation-page-layout.module';
 import { OrderDetailsPageLayoutModule } from './order-details-page-layout/order-details-page-layout.module';
-import { AddressBookPageLayoutModule } from './address-book-page-layout/address-book-page-layout.module';
 import { OrderHistoryPageLayoutModule } from './order-history-page-layout/order-history-page-layout.module';
 import { PaymentDetailsPageLayoutModule } from './payment-details-page-layout/payment-details-page-layout.module';
 import { ProductDetailsPageLayoutModule } from './product-details-page-layout/product-details-page-layout.module';
@@ -41,6 +42,7 @@ const layoutModules = [
   HelpPageLayoutModule,
   ContactPageLayoutModule,
   OutletRefModule,
+  CssRefModule,
   TermsConditionsLayoutModule
 ];
 

@@ -1,4 +1,6 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+
+import { CssOutletService } from '../css-outlet.service';
 
 @Directive({
   selector: '[cxCssRef]'
@@ -8,5 +10,12 @@ export class CssRefDirective implements OnInit {
 
   @Input() file: string;
 
-  ngOnInit() {}
+  constructor(
+    private tpl: ElementRef,
+    private cssOutletService: CssOutletService
+  ) {}
+
+  ngOnInit() {
+    this.cssOutletService.add(this.cxCssRef, this.tpl, this.file);
+  }
 }

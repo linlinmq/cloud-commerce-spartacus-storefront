@@ -1,10 +1,4 @@
-import {
-  Directive,
-  Input,
-  OnInit,
-  ViewContainerRef,
-  TemplateRef
-} from '@angular/core';
+import { Directive, Input, OnInit, ElementRef, Renderer2 } from '@angular/core';
 
 import { CssOutletService } from './css-outlet.service';
 
@@ -14,15 +8,9 @@ import { CssOutletService } from './css-outlet.service';
 export class CssOutletDirective implements OnInit {
   @Input() cxCssOutlet: string;
 
-  private _context: string;
-  @Input()
-  set cxCssOutletContext(value: string) {
-    this._context = value;
-  }
-
   constructor(
-    private vcr: ViewContainerRef,
-    private templateRef: TemplateRef<any>,
+    private renderer: Renderer2,
+    private el: ElementRef,
     private cssOutletService: CssOutletService
   ) {}
 
@@ -31,21 +19,12 @@ export class CssOutletDirective implements OnInit {
   }
 
   private renderTemplate(): void {
-    const template = this.cssOutletService.get(this.cxCssOutlet);
-    if (template) {
-      this.vcr.createEmbeddedView(template.template || this.templateRef, {
-        $implicit: this.context
-      });
-    }
-  }
+    const elem = this.cssOutletService.get(this.cxCssOutlet);
 
-  private get context() {
-    if (this._context) {
-      return this._context;
-    }
-
-    const ctx = (<any>this.vcr.injector).view.context;
-
-    return ctx.$implicit || ctx;
+    elem.elem.nativeElement.rel = 'stylesheet';
+    this.renderer.appendChild(
+      this.el.nativeElement.parentNode,
+      elem.elem.nativeElement
+    );
   }
 }

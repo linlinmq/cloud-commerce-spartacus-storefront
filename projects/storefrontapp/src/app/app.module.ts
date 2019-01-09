@@ -24,14 +24,14 @@ if (!environment.production) {
       pwa: {
         enabled: true,
         addToHomeScreen: true
-      },
-      product: {
-        styles: {
-          summary: {
-            cssIncludePaths: ['product-summary_alt']
-          }
-        }
       }
+      // product: {
+      //   styles: {
+      //     summary: {
+      //       cssIncludePaths: ['product-summary_alt1']
+      //     }
+      //   }
+      // }
     }),
     ...devImports
   ],

@@ -2,9 +2,9 @@ import {
   Component,
   Input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   Output,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 
 import { ProductModuleConfig } from '../../../product-config';

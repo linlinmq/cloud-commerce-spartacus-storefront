@@ -1,7 +1,7 @@
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 
-interface TemplateFile {
-  template: TemplateRef<any>;
+interface ElemFile {
+  elem?: ElementRef<any>;
   file?: string;
 }
 
@@ -9,13 +9,13 @@ interface TemplateFile {
   providedIn: 'root'
 })
 export class CssOutletService {
-  private templateRefs: TemplateFile = null;
+  private templateRefs: ElemFile = {};
 
-  add(outlet: string, template: TemplateRef<any>, file: string): void {
-    this.templateRefs[outlet] = { template, file };
+  add(outlet: string, elem: ElementRef<any>, file: string): void {
+    this.templateRefs[outlet] = { elem, file };
   }
 
-  get(outlet: string): TemplateFile {
+  get(outlet: string): ElemFile {
     return this.templateRefs[outlet];
   }
 }

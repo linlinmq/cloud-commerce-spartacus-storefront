@@ -8,4 +8,4 @@ import { CssRefDirective } from './css-ref.directive';
   declarations: [CssRefDirective],
   exports: [CssRefDirective]
 })
-export class OutletRefModule {}
+export class CssRefModule {}
