@@ -18,7 +18,7 @@ export abstract class AppPage {
     //
     // spike todo uncomment:
     console.log('before await category navigation visible');
-    await E2EUtil.wait4VisibleElement(this.header.categoryNavigation);
+    await E2EUtil.wait4PresentElement(this.header.categoryNavigationLink);
     console.log('after await category navigation visible');
     console.log('');
   }

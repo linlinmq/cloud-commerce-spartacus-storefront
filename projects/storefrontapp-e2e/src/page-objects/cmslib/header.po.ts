@@ -21,8 +21,8 @@ export class Header {
   readonly myAccountNavigationMenu: ElementFinder = this.header.element(
     by.css('[id="My Account"].nav-link.dropdown-toggle')
   );
-  readonly categoryNavigation: ElementFinder = this.header.element(
-    by.css('cx-category-navigation')
+  readonly categoryNavigationLink: ElementFinder = this.header.element(
+    by.css('cx-category-navigation a')
   );
   readonly logoutButton: ElementFinder = element(
     by.cssContainingText('.cx-navigation__child-item a', 'Sign Out')
