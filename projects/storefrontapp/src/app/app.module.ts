@@ -19,7 +19,7 @@ if (!environment.production) {
         baseUrl: environment.occBaseUrl
       },
       pwa: {
-        enabled: true,
+        enabled: false,
         addToHomeScreen: true
       },
       routesConfig: {

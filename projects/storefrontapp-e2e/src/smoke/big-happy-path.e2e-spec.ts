@@ -8,7 +8,8 @@ import { ProductDetailsPage } from '../page-objects/product-details.po';
 import { AddressForm } from '../page-objects/checkout/address-form.po';
 import { OrderHistoryPage } from '../page-objects/account/order-history.po';
 
-describe('Big Happy Path', () => {
+// spike todo remove fdescribe:
+fdescribe('Big Happy Path', () => {
   const home: HomePage = new HomePage();
   const checkoutPage = new MultiStepCheckoutPage();
 
@@ -20,20 +21,39 @@ describe('Big Happy Path', () => {
 
   beforeAll(async () => {
     // Go to Home
+    console.log('before await navigate to home');
     await home.navigateTo();
+    console.log('after await navigate to home');
+    console.log('');
+
     await home.waitForReady();
   });
 
-  it('should register successfully', async () => {
+  // spike todo remove fit:
+  fit('should register successfully', async () => {
     // Register a new user.
+    console.log('before await register new user');
     await LoginHelper.registerNewUser();
+    console.log('after await register new user');
+    console.log('');
+
+    console.log('before await expect is LoggedIn');
     expect(await home.header.isLoggedIn()).toBeTruthy();
+    console.log('after await expect is LoggedIn');
+    console.log('');
+
+    console.log('before await user full name in Login component');
     expect(await home.header.loginComponent.getText()).toContain(
       USER_FULL_NAME
     );
+    console.log('after await user full name in Login component');
+    console.log('');
 
+    console.log('before await log out via header');
     // Log out.
     await LoginHelper.logOutViaHeader();
+    console.log('after await log out via header');
+    console.log('');
   });
 
   it('should go to product page from category page', async () => {

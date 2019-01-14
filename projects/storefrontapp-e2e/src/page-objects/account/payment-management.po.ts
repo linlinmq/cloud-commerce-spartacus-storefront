@@ -30,6 +30,7 @@ export class PaymentManagementPage extends AppPage {
   }
 
   async waitForReady() {
+    await super.waitForReady();
     await E2EUtil.wait4NotVisibleElement(this.spinner);
   }
 }

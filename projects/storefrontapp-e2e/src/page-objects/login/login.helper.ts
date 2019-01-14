@@ -38,21 +38,54 @@ export class LoginHelper {
   }
 
   static async navigateToLoginViaHeader() {
+    console.log('before new Header');
     const header = new Header();
+    console.log('after new Header');
+    console.log('');
+
+    console.log('before await login icon button is clicked');
     await header.loginIconButton.click();
+    console.log('after await login icon button is clicked');
+    console.log('');
   }
 
   static async navigateToRegisterViaHeader() {
+    console.log('before LoginHelper.navigateToLoginViaHeader');
     await LoginHelper.navigateToLoginViaHeader();
+    console.log('after LoginHelper.navigateToLoginViaHeader');
+    console.log('');
+
+    console.log('before new LoginPage');
     const loginPage = new LoginPage();
+    console.log('after new LoginPage');
+    console.log('');
+
+    console.log('before await LoginPage wait for ready');
     await loginPage.waitForReady();
+    console.log('after await LoginPage wait for ready');
+    console.log('');
+
+    console.log('before await register button click');
     await loginPage.registerButton.click();
+    console.log('after await register button click');
+    console.log('');
   }
 
   static async registerNewUser() {
+    console.log('before new RegisterPage()');
     const registerPage = new RegisterPage();
+    console.log('after new RegisterPage()');
+    console.log('');
+
+    console.log('before await navigateToRegisterViaHeader');
     await LoginHelper.navigateToRegisterViaHeader();
+    console.log('after await navigateToRegisterViaHeader');
+    console.log('');
+
+    console.log('before await registerPage.waitForReady');
     await registerPage.waitForReady();
+    console.log('before await registerPage.waitForReady');
+    console.log('');
 
     const testUserId = Date.now() - 1535535333333;
     const userEmail = `user${testUserId}@${LoginHelper.DEFAULT_USER_DOMAIN}`;
@@ -107,7 +140,7 @@ export class LoginHelper {
 
   static async logOutViaHeader() {
     const header = new Header();
-    await header.navigationMenu.click();
+    await header.myAccountNavigationMenu.click();
     await header.logoutButton.click();
   }
 }

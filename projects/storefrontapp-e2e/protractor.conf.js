@@ -13,13 +13,14 @@ exports.config = {
       args: [
         'window-size=1600,1024',
         'disable-infobars',
-        'disable-web-security'
+        'disable-web-security',
+        'incognito' // spike todo remove
       ]
     }
   },
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 120000, //spike todo undo 30000
     print: function() {}
   },
   onPrepare() {

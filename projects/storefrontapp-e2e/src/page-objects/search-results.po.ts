@@ -84,7 +84,8 @@ export class SearchResultsPage extends AppPage {
   }
 
   async waitForReady() {
-    return E2EUtil.wait4VisibleElement(this.page);
+    await super.waitForReady();
+    await E2EUtil.wait4VisibleElement(this.page);
   }
 
   getAddToCartInProductListItem(product: ElementFinder): ElementFinder {

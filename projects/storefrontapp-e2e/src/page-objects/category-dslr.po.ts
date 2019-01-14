@@ -10,6 +10,7 @@ export class CategoryDslrPage extends AppPage {
     this.page.all(by.tagName('cx-responsive-banner')).get(productNo); // tslint:disable-line
 
   async waitForReady() {
+    await super.waitForReady();
     await E2EUtil.wait4VisibleElement(this.page);
   }
 

@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { map, catchError, filter, mergeMap, take } from 'rxjs/operators';
+import {
+  map,
+  catchError,
+  filter,
+  mergeMap,
+  take,
+  delay,
+  tap
+} from 'rxjs/operators';
 
 import * as navigationItemActions from '../actions/navigation-entry-item.action';
 import { OccCmsService } from '../../occ/occ-cms.service';
@@ -27,6 +35,13 @@ export class NavigationEntryItemEffects {
           filter(routerState => routerState !== undefined),
           map(routerState => routerState.state.context),
           take(1),
+          tap(() => {
+            console.log('==== before delay');
+          }),
+          delay(8000), //spike todo remove - it's only for check if e2e will fail because of it!
+          tap(() => {
+            console.log('==== after delay');
+          }),
           mergeMap(pageContext => {
             // download all items in one request
             return this.occCmsService

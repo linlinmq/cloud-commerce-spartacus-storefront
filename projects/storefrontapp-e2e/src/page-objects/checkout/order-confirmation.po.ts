@@ -40,6 +40,7 @@ export class OrderConfirmationPage extends AppPage {
       .get(itemNo);
 
   async waitForReady() {
+    await super.waitForReady();
     await E2EUtil.wait4VisibleElement(this.confirmationComponent);
   }
 }

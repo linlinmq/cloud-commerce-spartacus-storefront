@@ -17,7 +17,14 @@ export class HomePage extends AppPage {
   }
 
   async waitForReady() {
+    console.log('before await SUPER wait for ready');
+    await super.waitForReady();
+    console.log('after await SUPER wait for ready');
+    console.log('');
+
+    console.log('before await HomePage wait for ready');
     await E2EUtil.wait4VisibleElement(this.page);
+    console.log('after await HomePage wait for ready');
   }
 
   async navigateViaSplashBanner() {

@@ -13,6 +13,14 @@ export class RegisterPage extends AppPage {
   }
 
   async waitForReady() {
+    console.log('before await SUPER (RegisterPage) wait for ready');
+    await super.waitForReady();
+    console.log('after await SUPER (RegisterPage) wait for ready');
+    console.log('');
+
+    console.log('before await register form visible');
     await E2EUtil.wait4VisibleElement(this.registerForm.form);
+    console.log('after await register form visible');
+    console.log('');
   }
 }

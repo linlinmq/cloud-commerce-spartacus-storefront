@@ -49,6 +49,7 @@ export class CartPage extends AppPage {
   }
 
   async waitForReady() {
+    await super.waitForReady();
     await E2EUtil.wait4PresentElement(this.page);
   }
 

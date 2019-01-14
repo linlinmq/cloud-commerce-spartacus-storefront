@@ -15,6 +15,7 @@ export class LoginPage extends AppPage {
   }
 
   async waitForReady() {
+    await super.waitForReady();
     await E2EUtil.wait4VisibleElement(this.loginForm.form);
   }
 

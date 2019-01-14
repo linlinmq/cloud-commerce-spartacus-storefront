@@ -19,7 +19,7 @@ describe('Address management page', () => {
     await LoginHelper.registerNewUser();
 
     // Use navigation and go to address book page
-    await header.navigationMenu.click();
+    await header.myAccountNavigationMenu.click();
     await addressBookPage.menuItem.click();
 
     expect(addressBookPage.page).toBeTruthy();
