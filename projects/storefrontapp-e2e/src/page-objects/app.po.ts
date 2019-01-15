@@ -17,9 +17,9 @@ export abstract class AppPage {
     // random failures of e2e tests.
     //
     // spike todo uncomment:
-    console.log('before await category navigation visible');
+    console.log('before await category navigation link present');
     await E2EUtil.wait4PresentElement(this.header.categoryNavigationLink);
-    console.log('after await category navigation visible');
+    console.log('after await category navigation link present');
     console.log('');
   }
 }

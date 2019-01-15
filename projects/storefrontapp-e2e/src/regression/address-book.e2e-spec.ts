@@ -4,23 +4,36 @@ import { AddressBookPage } from '../page-objects/account/address-management.po';
 import { Header } from '../page-objects/cmslib/header.po';
 import { AddressForm } from '../page-objects/checkout/address-form.po';
 
-describe('Address management page', () => {
+// spike remove fdescribe
+fdescribe('Address management page', () => {
   const home = new HomePage();
   const header = new Header();
   const addressBookPage = new AddressBookPage();
   const addressForm = new AddressForm();
 
   beforeAll(async () => {
+    console.log('before await navigate to home');
     await home.navigateTo();
+    console.log('after await navigate to home');
   });
 
   it('should be able to open address book page using menu', async () => {
+    console.log('before await ready Home');
     await home.waitForReady();
+    console.log('after await ready home');
+
+    console.log('before await LoginHelper.registerNewUser');
     await LoginHelper.registerNewUser();
+    console.log('after await LoginHelper.registerNewUser');
 
     // Use navigation and go to address book page
+    console.log('before await click my account menu');
     await header.myAccountNavigationMenu.click();
+    console.log('after await click my account menu');
+
+    console.log('before await click my account menu ITEM');
     await addressBookPage.menuItem.click();
+    console.log('before await click my account menu ITEM');
 
     expect(addressBookPage.page).toBeTruthy();
   });

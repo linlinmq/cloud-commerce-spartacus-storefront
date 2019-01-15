@@ -36,11 +36,11 @@ export class NavigationEntryItemEffects {
           map(routerState => routerState.state.context),
           take(1),
           tap(() => {
-            console.log('==== before delay');
+            console.log('= before delay');
           }),
-          delay(8000), //spike todo remove - it's only for check if e2e will fail because of it!
+          delay(6000), //spike todo remove - it's only for check if e2e will fail because of it!
           tap(() => {
-            console.log('==== after delay');
+            console.log('= after delay');
           }),
           mergeMap(pageContext => {
             // download all items in one request

@@ -44,16 +44,56 @@ export class E2EUtil {
    * Wait until a given element is visible on the browser
    * @param elem The element
    */
-  static wait4VisibleElement(elem: ElementFinder): promise.Promise<{}> {
-    return browser.wait(ExpectedConditions.visibilityOf(elem));
+  static wait4VisibleElement(elem: ElementFinder): promise.Promise<any> {
+    // spike new:
+    return this.retryVisible(elem);
+  }
+
+  // spike todo remove
+  static async retryVisible(elem: ElementFinder) {
+    browser
+      .manage()
+      .timeouts()
+      .implicitlyWait(15000);
+
+    try {
+      console.log('=> try visibility!');
+      await browser.wait(ExpectedConditions.visibilityOf(elem));
+    } catch (_) {
+      console.log('=> RETRY sleep!');
+      await browser.sleep(1000);
+
+      console.log('=> before RETRY visibility!');
+      await browser.wait(ExpectedConditions.visibilityOf(elem));
+      console.log('=> after RETRY visibility!');
+    }
   }
 
   /**
    * Wait until a given element is present on the browser
    * @param elem The element
    */
-  static wait4PresentElement(elem: ElementFinder): promise.Promise<{}> {
-    return browser.wait(ExpectedConditions.presenceOf(elem));
+  static wait4PresentElement(elem: ElementFinder): promise.Promise<any> {
+    return this.retryPresence(elem);
+  }
+
+  // spike todo remove
+  static async retryPresence(elem: ElementFinder) {
+    browser
+      .manage()
+      .timeouts()
+      .implicitlyWait(15000);
+
+    try {
+      console.log('=> try presence!');
+      await browser.wait(ExpectedConditions.presenceOf(elem));
+    } catch (_) {
+      console.log('=> RETRY sleep!');
+      await browser.sleep(1000);
+      console.log('=> before RETRY presence!');
+      await browser.wait(ExpectedConditions.presenceOf(elem));
+      console.log('=> after RETRY presence!');
+    }
   }
 
   /**

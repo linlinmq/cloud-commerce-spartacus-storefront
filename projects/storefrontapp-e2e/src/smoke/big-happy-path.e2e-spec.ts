@@ -8,8 +8,7 @@ import { ProductDetailsPage } from '../page-objects/product-details.po';
 import { AddressForm } from '../page-objects/checkout/address-form.po';
 import { OrderHistoryPage } from '../page-objects/account/order-history.po';
 
-// spike todo remove fdescribe:
-fdescribe('Big Happy Path', () => {
+describe('Big Happy Path', () => {
   const home: HomePage = new HomePage();
   const checkoutPage = new MultiStepCheckoutPage();
 
@@ -29,8 +28,7 @@ fdescribe('Big Happy Path', () => {
     await home.waitForReady();
   });
 
-  // spike todo remove fit:
-  fit('should register successfully', async () => {
+  it('should register successfully', async () => {
     // Register a new user.
     console.log('before await register new user');
     await LoginHelper.registerNewUser();
