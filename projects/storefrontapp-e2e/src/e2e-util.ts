@@ -40,6 +40,22 @@ export class E2EUtil {
     );
   }
 
+  static spike_waitForAngularEnabled(bool) {
+    if (bool) {
+      browser.waitForAngularEnabled(true);
+      browser
+        .manage()
+        .timeouts()
+        .implicitlyWait(0);
+    } else {
+      browser.waitForAngularEnabled(false);
+      browser
+        .manage()
+        .timeouts()
+        .implicitlyWait(10000);
+    }
+  }
+
   /**
    * Wait until a given element is visible on the browser
    * @param elem The element
@@ -51,10 +67,7 @@ export class E2EUtil {
 
   // spike todo remove
   static async retryVisible(elem: ElementFinder) {
-    browser
-      .manage()
-      .timeouts()
-      .implicitlyWait(15000);
+    this.spike_waitForAngularEnabled(false);
 
     try {
       console.log('=> try visibility!');
@@ -66,6 +79,8 @@ export class E2EUtil {
       console.log('=> before RETRY visibility!');
       await browser.wait(ExpectedConditions.visibilityOf(elem));
       console.log('=> after RETRY visibility!');
+    } finally {
+      // this.spike_waitForAngularEnabled(true);
     }
   }
 
@@ -77,12 +92,23 @@ export class E2EUtil {
     return this.retryPresence(elem);
   }
 
+  static async safeClick(elem: ElementFinder): promise.Promise<any> {
+    // console.log('SAFE CLICK: before await for visible!');
+    // await this.wait4VisibleElement(elem);
+    // console.log('SAFE CLICK: after await for visible!');
+
+    this.spike_waitForAngularEnabled(false);
+
+    console.log('SAFE CLICK: before await click!');
+    await elem.click();
+    console.log('SAFE CLICK: after await click!');
+
+    // this.spike_waitForAngularEnabled(true);
+  }
+
   // spike todo remove
   static async retryPresence(elem: ElementFinder) {
-    browser
-      .manage()
-      .timeouts()
-      .implicitlyWait(15000);
+    this.spike_waitForAngularEnabled(false);
 
     try {
       console.log('=> try presence!');
@@ -93,6 +119,8 @@ export class E2EUtil {
       console.log('=> before RETRY presence!');
       await browser.wait(ExpectedConditions.presenceOf(elem));
       console.log('=> after RETRY presence!');
+    } finally {
+      // this.spike_waitForAngularEnabled(true);
     }
   }
 

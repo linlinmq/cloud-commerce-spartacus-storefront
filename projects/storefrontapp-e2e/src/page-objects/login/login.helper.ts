@@ -2,6 +2,7 @@ import { LoginPage } from './login.po';
 import { browser, ExpectedConditions } from 'protractor';
 import { RegisterPage } from '../register/register.po';
 import { Header } from '../cmslib/header.po';
+import { E2EUtil } from '../../e2e-util';
 
 export class LoginHelper {
   static userEmail: string;
@@ -44,7 +45,13 @@ export class LoginHelper {
     console.log('');
 
     console.log('before await login icon button is clicked');
-    await header.loginIconButton.click();
+    E2EUtil.spike_waitForAngularEnabled(true); //spike new
+    await header.loginIconButton.click(); // spike old
+    // E2EUtil.spike_waitForAngularEnabled(false); //spike new
+
+    //spike new:
+    // await E2EUtil.safeClick(header.loginIconButton); // spike new
+
     console.log('after await login icon button is clicked');
     console.log('');
   }

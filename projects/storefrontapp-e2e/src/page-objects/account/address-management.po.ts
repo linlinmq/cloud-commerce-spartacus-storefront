@@ -59,10 +59,21 @@ export class AddressBookPage extends AppPage {
   }
 
   async addNewAddress(addressForm: AddressForm) {
+    console.log('before await address form ready');
     await addressForm.waitForReady();
+    console.log('after await address form ready');
+
+    console.log('before await fill address form');
     await addressForm.fillIn();
+    console.log('after await fill address form');
+
+    console.log('before await Add address btn click');
     await this.addAddressActionBtn.click();
+    console.log('before await Add address btn click');
+
+    console.log('before await address management page ready');
     await this.waitForReady();
+    console.log('before await address management page ready');
   }
 
   async updateAddress(addressForm: AddressForm) {

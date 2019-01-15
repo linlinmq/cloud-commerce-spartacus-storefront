@@ -39,7 +39,10 @@ fdescribe('Address management page', () => {
   });
 
   it('should be able to add new address', async () => {
+    console.log('before await add new address');
     await addressBookPage.addNewAddress(addressForm);
+    console.log('after await add new address');
+
     expect(addressBookPage.addressCards.count()).toEqual(1);
     await addressBookPage.openNewAddressFormBtn.click();
     await addressBookPage.addNewAddress(addressForm);
