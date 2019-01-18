@@ -19,6 +19,7 @@
       *ngFor="let consignment of order.consignments"
       class="cx-order-details__list row"
     >
+    <ng-container *cxOutlet="outlets.HEADER">
       <div class="cx-order-details__list-header col-12">
         <div class="cx-order-details__status">{{ consignment?.status }}</div>
         <div *ngIf="consignment?.statusDate" class="cx-order-details__date">
@@ -26,6 +27,7 @@
           <div>{{ consignment?.statusDate | date }}</div>
         </div>
       </div>
+    </ng-container>
       <div class="cx-order-details__item-list col-12">
         <cx-cart-item-list
           [items]="getConsignmentProducts(consignment)"

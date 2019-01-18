@@ -14,6 +14,7 @@ import {
 import { Observable, Subscription, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Card } from '../../../ui/components/card/card.component';
+import { OrderOutlets } from '../order-outlets.model';
 
 @Component({
   selector: 'cx-order-details',
@@ -27,6 +28,12 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private routingService: RoutingService
   ) {}
+
+  static outlets = OrderOutlets;
+
+  get outlets() {
+    return OrderDetailsComponent.outlets;
+  }
 
   order$: Observable<Order>;
   subscription: Subscription;

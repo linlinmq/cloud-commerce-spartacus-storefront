@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StorefrontComponent, StorefrontModule } from '@spartacus/storefront';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ConsignmenttrackingModule } from './custom/consignmenttracking/consignmenttracking.module';
 
 const devImports = [];
 
@@ -12,6 +13,7 @@ if (!environment.production) {
 
 @NgModule({
   imports: [
+    ConsignmenttrackingModule,
     BrowserModule.withServerTransition({ appId: 'spartacus-app' }),
     StorefrontModule.withConfig({
       production: environment.production,

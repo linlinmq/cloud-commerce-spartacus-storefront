@@ -14,8 +14,11 @@ import { HeaderModule } from './../header/header.module';
 import { FooterComponent } from '../footer/footer.component';
 import { OutletRefModule } from '../../../outlet/outlet-ref/outlet-ref.module';
 import { PwaModule } from './../../../pwa/pwa.module';
+
+import { ConsignmenttrackingModule } from './../../../../../../storefrontapp/src/app/custom/consignmenttracking/consignmenttracking.module';
 @NgModule({
   imports: [
+    ConsignmenttrackingModule,
     CommonModule,
     RouterModule,
     GlobalMessageComponentModule,
