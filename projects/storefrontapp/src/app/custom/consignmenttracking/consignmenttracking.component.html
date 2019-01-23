@@ -1,12 +1,16 @@
-<div class="cx-order-details__list-header col-12">
+<div class="cx-order-details__list-header">
   <div class="cx-order-details__status">{{ consignment?.status }}</div>
   <div *ngIf="consignment?.statusDate" class="cx-order-details__date">
     <div>Shipped on &nbsp;</div>
     <div>{{ consignment?.statusDate | date }}</div>
   </div>
 
-  <button class="btn btn-block btn-action" (click)="loadTracking()">Track package</button>
+  <button class="btn btn-action" (click)="loadTracking()">Track package</button>
+  <!--
   <ng-container *ngIf="(consignmentTracking$ | async) as consignmentTracking">
-    <div> {{consignmentTracking | json }}</div>
+  <ng-container *ngFor="let trackingEvent of consignmentTracking.trackingEvents">
+    <div> {{trackingEvent.detail }}</div>
   </ng-container>
+</ng-container>
+-->
 </div>

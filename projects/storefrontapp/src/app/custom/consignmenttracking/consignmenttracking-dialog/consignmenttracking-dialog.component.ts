@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+//import {ConsignmentTracking} from './../../occ/occ.models';
 
 @Component({
   selector: 'cx-consignmenttracking-dialog',
@@ -16,6 +17,7 @@ import { Observable } from 'rxjs';
 export class ConsignmenttrackingDialogComponent implements OnInit, AfterViewChecked {
 
   consignmentTracking$: Observable<any>;
+  shipDate;
 
   previousLoadedState;
   finishedLoading;

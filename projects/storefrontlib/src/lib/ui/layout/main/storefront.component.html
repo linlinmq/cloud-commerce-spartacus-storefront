@@ -3,7 +3,7 @@
 <router-outlet></router-outlet>
 <cx-footer></cx-footer>
 
-<ng-template cxOutletRef="ORDERDETAIL.HEADER" let-consignment let-order>
-        <cx-consignmenttracking [consignment]="consignment" [order]="order" *ngIf="consignment?.status=='SHIPPED'"></cx-consignmenttracking>
+<ng-template cxOutletRef="ORDERDETAIL.HEADER" let-consignment>
+        <cx-consignmenttracking class="col-12" [consignment]="consignment"></cx-consignmenttracking>
     
 </ng-template>
