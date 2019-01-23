@@ -13,7 +13,8 @@
     
       <!-- shipment header -->
       <div class="cx-consignment-tracking-dialog__shipment-heading">
-
+        <ng-container *ngIf="consignmentTracking?.carrierDetails && consignmentTracking?.trackingID; else noTracking">
+               
         <div class="cx-consignment-tracking-dialog__shipment-row row">
           <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
             <div class="cx-consignment-tracking-dialog__shipment-title ">Shipped </div>
@@ -38,6 +39,7 @@
               
             </div>
           </div>
+        </ng-container>
       </div>
      <!-- tracking events -->
       <div class="cx-consignment-tracking-dialog__event modal-body" >
@@ -53,6 +55,9 @@
     
     
   </ng-container>
+<ng-template #noTracking>
+<div> No tracking information </div>
+</ng-template>
 
   <ng-template #loading>
     <div class="cx-consignment-tracking-dialog__header modal-header">
