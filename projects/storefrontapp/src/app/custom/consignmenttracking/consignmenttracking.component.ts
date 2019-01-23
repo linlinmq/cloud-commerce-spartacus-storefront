@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { RoutingService } from '@spartacus/core';
 import { ConsignmenttrackingDialogComponent } from './consignmenttracking-dialog/consignmenttracking-dialog.component';
@@ -16,11 +17,13 @@ import { ConsignmenttrackingService } from './../consignmenttracking.service';
 export class ConsignmenttrackingComponent implements OnInit {
 
 
-  @Input() consignment;
+  @Input()
+  consignment: any;
 
-  modalInstance;
-  consignmentTracking$;
+  modalInstance: any;
+  consignmentTracking$: Observable<any>;
   orderCode: string;
+
 
   constructor(
     private modalService: NgbModal,
@@ -36,7 +39,6 @@ export class ConsignmenttrackingComponent implements OnInit {
       .subscribe(orderCode => this.orderCode = orderCode);
   }
 
-
   loadTracking() {
     this.modalInstance = this.modalService.open(ConsignmenttrackingDialogComponent, {
       centered: true,
@@ -46,4 +48,8 @@ export class ConsignmenttrackingComponent implements OnInit {
     this.modalInstance.shipDate = this.consignment.statusDate;
   }
 
+  get showButton(): boolean {
+    return this.consignment.status === 'SHIPPED' || this.consignment.status === 'IN_TRANSIT' || this.consignment.status === 'DELIVERING'
+      || this.consignment.status === 'DELIVERY_COMPLETED' || this.consignment.status === 'DELIVERY_REJECTED';
+  }
 }

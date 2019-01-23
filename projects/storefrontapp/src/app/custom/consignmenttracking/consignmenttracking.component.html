@@ -5,7 +5,7 @@
     <div>{{ consignment?.statusDate | date }}</div>
   </div>
 
-  <button class="btn btn-action" (click)="loadTracking()">Track package</button>
+  <button *ngIf='showButton' class="btn btn-action" (click)="loadTracking()">Track package</button>
   <!--
   <ng-container *ngIf="(consignmentTracking$ | async) as consignmentTracking">
   <ng-container *ngFor="let trackingEvent of consignmentTracking.trackingEvents">
