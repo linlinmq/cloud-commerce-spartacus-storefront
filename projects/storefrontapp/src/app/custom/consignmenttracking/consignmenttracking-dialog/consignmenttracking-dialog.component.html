@@ -1,5 +1,5 @@
 <div class="cx-consignment-tracking-dialog" #dialog>
-  <!-- Modal Header cx-added-to-cart-dialog-->
+  <!-- Modal Header -->
   <ng-container *ngIf="(consignmentTracking$ | async) as consignmentTracking; else loading">
     <div class="cx-consignment-tracking-dialog__header modal-header">
       <div class="cx-consignment-tracking-dialog__title modal-title">
@@ -29,7 +29,7 @@
         <div class="cx-consignment-tracking-dialog__shipment-row row">
             <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
               <div class="cx-consignment-tracking-dialog__shipment-title">Delivery Service</div>
-              <div> {{consignmentTracking?.carrierDetails?.name}}</div>
+              <div> {{consignmentTracking?.carrierDetails?.code}}</div>
             </div>
            <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
               <div class="cx-consignment-tracking-dialog__shipment-title">Tracking Number</div>
@@ -47,7 +47,7 @@
             <div class="event-body">
                 <div>{{consignmentEvent.eventDate | date}}</div>
                 <div class="cx-consignment-tracking-dialog__shipment-title">{{consignmentEvent.referenceCode}}</div>
-                <div>detail: {{consignmentEvent.detail}}</div>
+                <div>{{consignmentEvent.detail}}</div>
                 <div class="cx-consignment-tracking-dialog__shipment-city">location: {{consignmentEvent.location}}</div>
             </div>          
         </ng-container>
@@ -56,7 +56,7 @@
     
   </ng-container>
 <ng-template #noTracking>
-<div> No tracking information </div>
+    <div> No tracking information </div>
 </ng-template>
 
   <ng-template #loading>
