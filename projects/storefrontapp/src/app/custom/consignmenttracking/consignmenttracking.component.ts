@@ -24,6 +24,9 @@ export class ConsignmenttrackingComponent implements OnInit {
   consignmentTracking$: Observable<any>;
   orderCode: string;
 
+  bindResult$: any;
+  sendResult$: any;
+
 
   constructor(
     private modalService: NgbModal,
@@ -46,6 +49,14 @@ export class ConsignmenttrackingComponent implements OnInit {
     }).componentInstance;
     this.modalInstance.consignmentTracking$ = this.service.getConsignmentTracking(this.orderCode, this.consignment.code);
     this.modalInstance.shipDate = this.consignment.statusDate;
+  }
+
+  sendVerificationCode() {
+    this.sendResult$ = this.service.sendVerificationCode();
+  }
+
+  bindMobileNumber() {
+    this.bindResult$ = this.service.bindMobileNumber();
   }
 
   get showButton(): boolean {

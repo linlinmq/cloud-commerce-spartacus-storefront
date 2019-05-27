@@ -43,6 +43,72 @@ export class ConsignmenttrackingService {
 
   }
 
+  public sendVerificationCode(): Observable<any> {
+
+    const url = this.sendVerificationCodeUrl();
+    // const params = new HttpParams({
+    //   fromString: 'mobileNumber=13800000000'
+    // });
+    //const params = new HttpParams().set('mobileNumber', '13800000000');
+
+    // return this.http
+    //   .post<any>(url, { params: params })
+    //   .pipe(catchError((error: any) => throwError(error)));
+
+    return this.http
+      .post(
+        url,
+        {},
+        {
+          params: { mobileNumber: '13800000000' }
+        }
+      )
+      .pipe(catchError((error: any) => throwError(error)));
+
+  }
+
+  public bindMobileNumber(): Observable<any> {
+
+    const url = this.bindMobileNumberUrl();
+    // const params = new HttpParams({
+    //   fromString: 'mobileNumber=13800000000&verificationCode=1234'
+    // });
+    // const params = new HttpParams().set('mobileNumber', '13800000000');
+    // params.set('verificationCode', '1234');
+    // return this.http
+    //   .post<any>(url, { params: params })
+    //   .pipe(catchError((error: any) => throwError(error)));
+
+    return this.http
+      .post(
+        url,
+        {},
+        {
+          params: { mobileNumber: '13800000000', verificationCode: '1234' }
+        }
+      )
+      .pipe(catchError((error: any) => throwError(error)));
+
+  }
+
+  protected sendVerificationCodeUrl() {
+    return (
+      (this.config.server.baseUrl || '') +
+      this.config.server.occPrefix +
+      this.config.site.baseSite +
+      '/users/current/mobilenumber/verificationcode'
+    );
+  }
+
+  protected bindMobileNumberUrl() {
+    return (
+      (this.config.server.baseUrl || '') +
+      this.config.server.occPrefix +
+      this.config.site.baseSite +
+      '/users/current/mobilenumber'
+    );
+  }
+
 
 
 }

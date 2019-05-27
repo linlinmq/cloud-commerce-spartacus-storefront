@@ -10,11 +10,11 @@
       </button>
     </div>
     <!-- Modal Body -->
-    
-      <!-- shipment header -->
-      <div class="cx-consignment-tracking-dialog__shipment-heading">
-        <ng-container *ngIf="consignmentTracking?.carrierDetails && consignmentTracking?.trackingID; else noTracking">
-               
+
+    <!-- shipment header -->
+    <div class="cx-consignment-tracking-dialog__shipment-heading">
+      <ng-container *ngIf="consignmentTracking?.carrierDetails && consignmentTracking?.trackingID; else noTracking">
+
         <div class="cx-consignment-tracking-dialog__shipment-row row">
           <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
             <div class="cx-consignment-tracking-dialog__shipment-title ">Shipped </div>
@@ -27,37 +27,37 @@
         </div>
 
         <div class="cx-consignment-tracking-dialog__shipment-row row">
-            <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
-              <div class="cx-consignment-tracking-dialog__shipment-title">Delivery Service</div>
-              <div> {{consignmentTracking?.carrierDetails?.code}}</div>
-            </div>
-           <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
-              <div class="cx-consignment-tracking-dialog__shipment-title">Tracking Number</div>
-              <div>
-                <a [href]="consignmentTracking?.trackingUrl"> {{consignmentTracking?.trackingID}} </a>
-              </div>
-              
-            </div>
+          <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
+            <div class="cx-consignment-tracking-dialog__shipment-title">Delivery Service</div>
+            <div> {{consignmentTracking?.carrierDetails?.code}}</div>
           </div>
-        </ng-container>
-      </div>
-     <!-- tracking events -->
-      <div class="cx-consignment-tracking-dialog__event modal-body" >
-        <ng-container *ngFor="let consignmentEvent of consignmentTracking.trackingEvents">          
-            <div class="event-body">
-                <div>{{consignmentEvent.eventDate | date}}</div>
-                <div class="cx-consignment-tracking-dialog__shipment-title">{{consignmentEvent.referenceCode}}</div>
-                <div>{{consignmentEvent.detail}}</div>
-                <div class="cx-consignment-tracking-dialog__shipment-city">location: {{consignmentEvent.location}}</div>
-            </div>          
-        </ng-container>
-      </div>
-    
-    
+          <div class="cx-consignment-tracking-dialog__infoblock col-sm-12 col-md-6">
+            <div class="cx-consignment-tracking-dialog__shipment-title">Tracking Number</div>
+            <div>
+              <a [href]="consignmentTracking?.trackingUrl"> {{consignmentTracking?.trackingID}} </a>
+            </div>
+
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- tracking events -->
+    <div class="cx-consignment-tracking-dialog__event modal-body">
+      <ng-container *ngFor="let consignmentEvent of consignmentTracking.trackingEvents">
+        <div class="event-body">
+          <div>{{consignmentEvent.eventDate | date}}</div>
+          <div class="cx-consignment-tracking-dialog__shipment-title">{{consignmentEvent.referenceCode}}</div>
+          <div>{{consignmentEvent.detail}}</div>
+          <div class="cx-consignment-tracking-dialog__shipment-city"> {{consignmentEvent.location}}</div>
+        </div>
+      </ng-container>
+    </div>
+
+
   </ng-container>
-<ng-template #noTracking>
+  <ng-template #noTracking>
     <div> No tracking information </div>
-</ng-template>
+  </ng-template>
 
   <ng-template #loading>
     <div class="cx-consignment-tracking-dialog__header modal-header">

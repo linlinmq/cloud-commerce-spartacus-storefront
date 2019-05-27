@@ -7,6 +7,16 @@
 
   <button *ngIf='showButton' class="btn btn-action" (click)="loadTracking()">Track package</button>
   <!--
+  <button class="btn btn-action" (click)="sendVerificationCode()">SendVeriricationCode</button>
+  <button class="btn btn-action" (click)="bindMobileNumber()">BindMobileNumber</button>
+-->
+  <ng-container *ngIf="(sendResult$ | async) as sendResult">
+    <div>{{sendResult | json}}</div>
+  </ng-container>
+  <ng-container *ngIf="(bindResult$ | async) as result">
+    <div>{{result | json}}</div>
+  </ng-container>
+  <!--
   <ng-container *ngIf="(consignmentTracking$ | async) as consignmentTracking">
   <ng-container *ngFor="let trackingEvent of consignmentTracking.trackingEvents">
     <div> {{trackingEvent.detail }}</div>
